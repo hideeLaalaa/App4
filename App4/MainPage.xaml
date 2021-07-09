@@ -1,0 +1,48 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:utm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    x:Class="utm.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="1024" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
+        <Grid RenderTransformOrigin="0.393,0.51" HorizontalAlignment="Left" Width="355">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF37267A" Offset="1"/>
+                    <GradientStop Color="#FF040F47" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock HorizontalAlignment="Left" Height="60" Margin="50,50,50,0" Text="Tensile Strength Data Logger" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" FontSize="24" TextAlignment="Center" Foreground="White" FontFamily="Cooper Black" LineHeight="30.12" FocusVisualPrimaryBrush="White" FontWeight="Bold" TextTrimming="None" CharacterSpacing="50"/>
+            <Rectangle HorizontalAlignment="Center" Margin="0,210,0,606" Width="255" FocusVisualPrimaryBrush="{x:Null}" Fill="#169FA2B4"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,240,0,748" Text="Test for new materials through the button below" TextWrapping="Wrap" Width="195" FontSize="14" TextAlignment="Center" Foreground="White" FontFamily="Tahoma" LineHeight="17.57" FocusVisualPrimaryBrush="#FFFAFAFA" CharacterSpacing="55"/>
+            <Button x:Name="Test_Button"  Content="Perform Strength Test" Margin="0,306,0,648" VerticalAlignment="Stretch" Width="159" HorizontalAlignment="Center" Background="White" FontFamily="Rockwell Extra Bold" FontSize="14" CharacterSpacing="55" FocusVisualPrimaryBrush="#FF23A3B0" AllowDrop="True" Click="Button_Click" ManipulationMode="All" HighContrastAdjustment="Auto" UseSystemFocusVisuals="False"/>
+        </Grid>
+        <Grid Margin="355,0,0,0">
+            <TextBlock HorizontalAlignment="Left" Height="30" Margin="50,50,0,0" Text="Measured Data" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" TextAlignment="Center" Foreground="Black" FontFamily="Cooper Black" LineHeight="30.12" FocusVisualPrimaryBrush="White" FontWeight="Bold" TextTrimming="None" CharacterSpacing="30"/>
+            <Custom:DataGrid ItemsSource="{x:Bind data}" AutoGenerateColumns="False" Height="535" Margin="50,117,30,0" VerticalAlignment="Top" FontFamily="Calisto MT" FontSize="16" ColumnHeaderHeight="47" GridLinesVisibility="All" HeadersVisibility="Column" IsReadOnly="True"  SelectionMode="Single"
+                             BorderBrush="Black" AreRowDetailsFrozen="True" MinColumnWidth="50"
+                             >
+                <Custom:DataGrid.AlternatingRowBackground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Reflect">
+                        <GradientStop Color="#0C1E1E27" Offset="1"/>
+                        <GradientStop Color="#0C4242D4" Offset="0"/>
+                    </LinearGradientBrush>
+                </Custom:DataGrid.AlternatingRowBackground>
+                <Custom:DataGrid.Columns>
+                    <Custom:DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="60" FontSize="14"/>
+                    <Custom:DataGridTextColumn Header="Material Name" Binding="{Binding Material_Name}" IsReadOnly="True" Width="214" FontSize="15"/>
+                    <Custom:DataGridTextColumn Header="Material Type" Binding="{Binding Material_Type}" IsReadOnly="True" Width="124"/>
+                    <Custom:DataGridTextColumn Header="Stress" Binding="{Binding Stress}" IsReadOnly="True" Width="74"/>
+                    <Custom:DataGridTextColumn Header="Strain" Binding="{Binding Strain}" IsReadOnly="True" Width="77"/>
+                    <Custom:DataGridTextColumn Header="Material Strength (N/M2)" Binding="{Binding Material_Strength}" IsReadOnly="True" Width="180"/>
+                    <Custom:DataGridTextColumn Header="Date Tested" Binding="{Binding DateTested}" IsReadOnly="True" Width="194" FontSize="14"/>
+                </Custom:DataGrid.Columns>
+            </Custom:DataGrid>
+        </Grid>
+    </Grid>
+</Page>
